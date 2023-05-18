@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // users collection
+    match /users/{user_id} {
+      allow read, create: if request.auth != null;
+      allow update: if request.auth != null && request.auth.uid == user_id;
+    }
+    // projects collection
+    match /projects/{project_id} {
+      allow read, create, update: if request.auth != null;
+      allow delete: if request.auth != null && request.auth.uid == resource.data.createdBy.id;
+    }
+  }
+}
+
+// users collection
+// - any authenticated user can read & write
+// - only users who 'own/created' a document can update it (user id's match)
+
+// projects collection
+// - any authenticated user can read, create, & update a document
+// - only users who 'own/created' a document can delete it
+
+// notes
+// - the resource object allows us to access the document, and data allows us to access the data, and then we can go further
