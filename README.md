@@ -1,4 +1,38 @@
-# Getting Started with Create React App
+<a name="top"></a>
+
+# Project Collaboration App
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+
+<p style="text-align:left">
+<img width="50%" src="src/assets/screenshots/ss1.png" alt="screenshot of dashboard">
+</p>
+
+## Description
+
+A project management app that allows users to collaborate on projects. Users can sign up and make an account, see which other users are 'online', view/filter/comment on projects that are currently being worked on, and create/delete projects themselves.
+
+## Getting started
+
+Firebase was used to host the app, and you can access it by going to the link below and then signing up.
+
+https://thedojosite-a2479.web.app/
+
+Alternatively, to run the app locally, download or clone this repo and run `npm i` to install dependencies.
+
+## What I learned
+
+Aside from using this experience to refresh myself in front-end fundamentals and working in React, I learned some of the basics of how to interact with Firebase and make use of some of their services such as firestore database collections, storage, hosting, and authentication.
+
+## Credits
+
+This app was made by following along a course created by [Shaun](https://github.com/iamshaunjp), better known as 'The Net Ninja'. The course can be found [here](https://netninja.dev/p/build-websites-with-react-firebase) and the course files can be found [here](https://github.com/iamshaunjp/React-Firebase).
+
+<p align="right">
+  <a href="#top">Back to top</a>
+</p>
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -67,4 +101,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
