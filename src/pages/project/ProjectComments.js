@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { timestamp } from '../../firebase/config';
+import { Timestamp } from 'firebase/firestore';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { v4 as uuidv4 } from 'uuid';
 import { useFirestore } from '../../hooks/useFirestore';
@@ -18,7 +18,7 @@ export default function ProjectComments({ project }) {
       displayName: user.displayName,
       photoURL: user.photoURL,
       content: newComment,
-      createdAt: timestamp.fromDate(new Date()),
+      createdAt: Timestamp.fromDate(new Date()),
       id: uuidv4(), //Math.random(),
     };
 

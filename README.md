@@ -5,7 +5,7 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
 <p style="text-align:left">
-<img width="50%" src="src/assets/screenshots/ss1.png" alt="screenshot of dashboard">
+<img width="75%" src="src/assets/screenshots/ss1.png" alt="screenshot of dashboard">
 </p>
 
 ## Description

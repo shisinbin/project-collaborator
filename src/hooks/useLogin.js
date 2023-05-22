@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
-import { projectAuth, projectFirestore } from '../firebase/config';
+import { db, auth } from '../firebase/config';
 import { useAuthContext } from './useAuthContext';
+
+// firebase imports
+import { doc, updateDoc } from 'firebase/firestore';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false);
@@ -14,7 +18,7 @@ export const useLogin = () => {
 
     try {
       // login
-      const res = await projectAuth.signInWithEmailAndPassword(email, password);
+      const res = await signInWithEmailAndPassword(auth, email, password);
 
       // throw error if bad response
       if (!res) {
@@ -22,10 +26,8 @@ export const useLogin = () => {
       }
 
       // update online status
-      await projectFirestore
-        .collection('users')
-        .doc(res.user.uid)
-        .update({ online: true });
+      const userDocRef = doc(db, 'users', res.user.uid);
+      await updateDoc(userDocRef, { online: true });
 
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res.user });

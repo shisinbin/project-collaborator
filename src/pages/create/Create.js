@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { useCollection } from '../../hooks/useCollection';
-import { timestamp, projectFirestore } from '../../firebase/config';
+import { Timestamp } from 'firebase/firestore';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useNavigate } from 'react-router-dom';
@@ -17,10 +17,9 @@ const categories = [
 ];
 
 export default function Create() {
-  // to add a new project to firebase
-  const { addDocument, response } = useFirestore('projects');
   const navigate = useNavigate();
-
+  // grab function to add doc, and the response object
+  const { addDocument, response } = useFirestore('projects');
   // grab the user data from the firestore db collection 'users'
   const { documents } = useCollection('users');
   // create some state to nicely show users for the dropdown menu
@@ -39,8 +38,6 @@ export default function Create() {
   // to determine who is creating the project
   const { user } = useAuthContext();
 
-  const [attemptedAddingProject, setAttemptedAddingProject] = useState(false);
-
   useEffect(() => {
     // when component renders, if there are users, then nicely format them for the dropdown
     if (documents) {
@@ -55,6 +52,7 @@ export default function Create() {
     // re-run this anytime there's new users added
   }, [documents]);
 
+  // a more robust way of navigating away when user has added a project
   useEffect(() => {
     if (response.success) {
       navigate('/');
@@ -92,12 +90,12 @@ export default function Create() {
     event.preventDefault();
     setFormError(null);
 
-    // check to see that a category has been chosen
+    // Check if a category has been chosen
     if (formData.category.trim().length === 0) {
       setFormError('Please select a product category');
       return;
     }
-    // check to see that a user has been chosen
+    // Check if a user has been chosen
     if (formData.assignedUsers.length === 0) {
       setFormError('Please assign the project to at least one user');
       return;
@@ -121,7 +119,7 @@ export default function Create() {
       name: formData.name,
       details: formData.details,
       category: formData.category,
-      dueDate: timestamp.fromDate(new Date(formData.dueDate)),
+      dueDate: Timestamp.fromDate(new Date(formData.dueDate)),
       comments: [],
       createdBy: createdBy,
       assignedUsersList,
